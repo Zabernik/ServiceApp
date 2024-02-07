@@ -1,0 +1,25 @@
+﻿@model Ticket
+@{
+}
+
+<h1>Nowe Zgłoszenie</h1>
+<form asp-controller="Tickets" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Title"></label>
+        <input class="form-control" asp-for="Title" />
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Author"></label>
+        <input class="form-control" asp-for="Author" />
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Utwórz</button>
+    </div>
+</form>
