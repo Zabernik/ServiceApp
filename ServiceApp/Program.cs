@@ -1,3 +1,9 @@
+using ServiceApp.Services;
+using ServiceApp.Interfaces;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Data.Entities;
+using Data;
+
 namespace ServiceApp
 {
     public class Program
@@ -8,6 +14,12 @@ namespace ServiceApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddSingleton<ITicketService, MemoryTicketService>();
+
+
 
             var app = builder.Build();
 
@@ -29,6 +41,9 @@ namespace ServiceApp
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            DatabaseFacade databaseFacade = new DatabaseFacade(new AppDbContext());
+            databaseFacade.EnsureCreated();
 
             app.Run();
         }

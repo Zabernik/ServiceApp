@@ -19,8 +19,11 @@ namespace ServiceApp.Models
         [HiddenInput]
         public int Id { get; set; }
         [Display(Name ="Tytuł Zgłoszenia")]
+        [Required(ErrorMessage ="Nie podano tematu zgłoszenia")]
         public string Title { get; set; }
         [Display(Name ="Opis")]
+        [Required(ErrorMessage ="Nie opisałeś problemu z działaniem maszyny")]
+        [StringLength(maximumLength: 2000, MinimumLength = 10, ErrorMessage = "Opis musi zawierać między 10 a 2000 znaków")]
         public string Description { get; set; }
         [Display(Name ="Zgłaszający")]
         public string Author { get; set; }
